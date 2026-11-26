@@ -186,13 +186,14 @@ if prediction[0] == 1:
     print("Prediction: Healthy Control")
 else:
     print("Prediction: Breast Cancer Patient")
+	
 ```
 
 <H3>Output:</H3>
-```
+
 <img width="782" height="727" alt="Screenshot 2026-11-26 150940" src="https://github.com/user-attachments/assets/ef34d222-864e-4e03-9dbb-626cb869df02" />
 <img width="510" height="335" alt="Screenshot 2026-11-26 151054" src="https://github.com/user-attachments/assets/4f27ede4-d6be-4a58-9dc6-972e7fbdaa7c" />
-``
+
 
 
 <H3>Result:</H3>
