@@ -115,6 +115,7 @@ Normalize our dataset.
 8. Finally, call the functions confusion_matrix(), and the classification_report() in order to evaluate the performance of our classifier.
 
 <H3>Program:</H3> 
+```
 # Import required libraries
 
 from ucimlrepo import fetch_ucirepo
@@ -187,7 +188,7 @@ if prediction[0] == 1:
     print("Prediction: Healthy Control")
 else:
     print("Prediction: Breast Cancer Patient")
-
+``
 
 <H3>Output:</H3>
 <img width="782" height="727" alt="Screenshot 2026-11-26 150940" src="https://github.com/user-attachments/assets/ef34d222-864e-4e03-9dbb-626cb869df02" />
