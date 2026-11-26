@@ -1,6 +1,6 @@
 
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME:Nivetha N
+<H3>ENTER YOUR REGISTER NO.:212225040290
 <H3>EX. NO.4</H3>
 <H3>DATE:</H3>
 <H1 ALIGN =CENTER>Implementation of MLP with Backpropagation for Multiclassification</H1>
@@ -115,12 +115,85 @@ Normalize our dataset.
 8. Finally, call the functions confusion_matrix(), and the classification_report() in order to evaluate the performance of our classifier.
 
 <H3>Program:</H3> 
+# Import required libraries
 
-Insert your code here
+from ucimlrepo import fetch_ucirepo
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+
+# Load Breast Cancer Coimbra Dataset
+
+data = fetch_ucirepo(id=451)
+
+X = data.data.features
+y = data.data.targets
+
+# Convert target into a single column
+
+y = y.iloc[:, 0]
+
+# Split dataset into training and testing data
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+# Create Logistic Regression model
+
+model = LogisticRegression(max_iter=1000)
+
+# Train the model
+
+model.fit(X_train, y_train)
+
+# Predict the test data
+
+y_pred = model.predict(X_test)
+
+# Calculate accuracy
+
+accuracy = accuracy_score(y_test, y_pred)
+
+print("Accuracy:", accuracy)
+
+# Display confusion matrix
+
+print("Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+# Display classification report
+
+print("Classification Report:")
+print(classification_report(y_test, y_pred))
+
+# Predict for a new patient
+
+new_patient = pd.DataFrame([[
+    50, 25, 100, 10, 2.5,
+    20, 10, 15, 20
+]], columns=X.columns)
+
+prediction = model.predict(new_patient)
+
+if prediction[0] == 1:
+    print("Prediction: Healthy Control")
+else:
+    print("Prediction: Breast Cancer Patient")
+
 
 <H3>Output:</H3>
+<img width="782" height="727" alt="Screenshot 2026-11-26 150940" src="https://github.com/user-attachments/assets/ef34d222-864e-4e03-9dbb-626cb869df02" />
+<img width="510" height="335" alt="Screenshot 2026-11-26 151054" src="https://github.com/user-attachments/assets/4f27ede4-d6be-4a58-9dc6-972e7fbdaa7c" />
 
-Show your results here
+
 
 <H3>Result:</H3>
 Thus, MLP is implemented for multi-classification using python.
