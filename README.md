@@ -115,7 +115,7 @@ Normalize our dataset.
 8. Finally, call the functions confusion_matrix(), and the classification_report() in order to evaluate the performance of our classifier.
 
 <H3>Program:</H3> 
-```
+``
 # Import required libraries
 
 from ucimlrepo import fetch_ucirepo
@@ -127,18 +127,16 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 
-# Load Breast Cancer Coimbra Dataset
-
 data = fetch_ucirepo(id=451)
 
 X = data.data.features
 y = data.data.targets
 
-# Convert target into a single column
+
 
 y = y.iloc[:, 0]
 
-# Split dataset into training and testing data
+
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
@@ -147,35 +145,35 @@ X_train, X_test, y_train, y_test = train_test_split(
     stratify=y
 )
 
-# Create Logistic Regression model
+
 
 model = LogisticRegression(max_iter=1000)
 
-# Train the model
+
 
 model.fit(X_train, y_train)
 
-# Predict the test data
+
 
 y_pred = model.predict(X_test)
 
-# Calculate accuracy
+
 
 accuracy = accuracy_score(y_test, y_pred)
 
 print("Accuracy:", accuracy)
 
-# Display confusion matrix
+
 
 print("Confusion Matrix:")
 print(confusion_matrix(y_test, y_pred))
 
-# Display classification report
+
 
 print("Classification Report:")
 print(classification_report(y_test, y_pred))
 
-# Predict for a new patient
+
 
 new_patient = pd.DataFrame([[
     50, 25, 100, 10, 2.5,
